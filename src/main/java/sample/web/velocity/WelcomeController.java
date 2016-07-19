@@ -32,14 +32,12 @@ import java.util.Map;
 
 @Controller
 public class WelcomeController {
-    final ObjectMapper mapper = new ObjectMapper();
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String view(Map<String, Object> model) throws JsonProcessingException {
         final Bean bean = new Bean("hey", Collections.singleton("1"), Collections.singletonMap("sh", "it"));
         model.put("head", "Change me");
         model.put("bean", bean);
-        model.put("json", mapper.writeValueAsString(bean));
         return "welcome";
     }
 

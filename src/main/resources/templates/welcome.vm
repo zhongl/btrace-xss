@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body>
+  <h1>$head</h1>
+  <h3>$bean.text</h3>
+	<ul>
+#foreach ($i in $bean.coll)
+    <li>$i</li>
+#end
+  </ul>
+  <ul>
+#foreach ($k in $bean.map.keySet())
+    <lo>$k -> $bean.map.get($k)</lo>
+#end
+  </ul>
+  </script>
+</body>
+
+</html>

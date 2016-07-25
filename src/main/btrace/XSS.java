@@ -17,6 +17,10 @@ public class XSS {
         final Class<?> c = classOf(value);
         if (!isArray(c) && !isPrimitive(c) && !isAssignableFrom(mapClass, c) && !isAssignableFrom(iterClass, c)) {
             println("Render " + get(field(classOf(self), "nullString"), self) + " -> " + value);
+
+            if (matches("<", str(value))) {
+                println("Got it : " + value);
+            }
         }
     }
 

@@ -16,15 +16,10 @@
 
 package sample.web.velocity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -35,7 +30,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String view(Map<String, Object> model) throws JsonProcessingException {
-        final Bean bean = new Bean("hey", Collections.singleton("1"), Collections.singletonMap("sh", "it"));
+        final Bean bean = new Bean("hey", Collections.singleton("1"), Collections.singletonMap("sh", "<"));
         model.put("head", "Change me");
         model.put("bean", bean);
         return "welcome";

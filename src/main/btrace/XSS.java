@@ -14,12 +14,14 @@ public class XSS {
             location = @Location(Kind.RETURN)
     )
     public static void onRef(@Self Object self, @Return Object value) {
-        final Class<?> c = classOf(value);
-        if (!isArray(c) && !isPrimitive(c) && !isAssignableFrom(mapClass, c) && !isAssignableFrom(iterClass, c)) {
-            println("Render " + get(field(classOf(self), "nullString"), self) + " -> " + value);
+        if (value != null) {
+            final Class<?> c = classOf(value);
+            if (!isArray(c) && !isPrimitive(c) && !isAssignableFrom(mapClass, c) && !isAssignableFrom(iterClass, c)) {
+                println("Render " + get(field(classOf(self), "nullString"), self) + " -> " + value);
 
-            if (matches("<", str(value))) {
-                println("Got it : " + value);
+                if (matches("<", str(value))) {
+                    println("Got it : " + value);
+                }
             }
         }
     }
